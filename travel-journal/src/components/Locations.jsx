@@ -1,20 +1,25 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
-export default function Location() {
+export default function Location(props) {
   return (
-    <div>
-      <img src='https://source.unsplash.com/WLxQvbMyfas' alt='' />
-      <span>
-        <FontAwesomeIcon icon={solid('location-dot')} />
-        <p>JAPAN</p>
-        <a href='https://goo.gl/maps/1DGM5WrWnATgkSNB8'>View on Google Maps</a>
-      </span>
-      <h1>Mount Fuji</h1>
-      <span>
-        <b>start - end</b>
-      </span>
-      <p>description</p>
+    <div className='location'>
+      <img className='location--image' src={props.data.imageUrl} alt='' />
+      <section className='location--details'>
+        <span className='location--location'>
+          <FontAwesomeIcon className='red' icon={solid('location-dot')} />
+          &nbsp; <p className='location--country'>{props.data.location}</p>{' '}
+          &nbsp;&nbsp;
+          <a href={props.data.googleMapsUrl}>View on Google Maps</a>
+        </span>
+        <h1 className='location--title'>{props.data.title}</h1>
+        <span>
+          <b>
+            {props.data.startDate} - {props.data.endDate}
+          </b>
+        </span>
+        <p className='location--description'>{props.data.description}</p>
+      </section>
     </div>
   );
 }
